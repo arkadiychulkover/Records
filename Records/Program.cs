@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Records
 {
-    internal class Program <T>
+    internal class Program 
     {
         public T Max<T>(T a, T b, T c) where T : IComparable
         {
@@ -34,8 +34,13 @@ namespace Records
 
             //Console.WriteLine("hello".Reverse());
 
-            Program<int> program = new Program<int>();
+            Program program = new Program();
             Console.WriteLine(program.Max(1, 2, 3));
+            Stek<int> stek = new Stek<int>();
+            stek.Push(1);
+            stek.Push(2);
+            stek.Pop();
+            stek.Show();
         }
     }
 
@@ -157,6 +162,13 @@ namespace Records
         public int Count()
         {
             return count;
+        }
+        public void Show()
+        {
+            foreach (T item in arr)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 
