@@ -86,5 +86,31 @@ namespace Records
             }
             return temp;
         }
+        public static Person MinAge(this Person[] arr) 
+        {
+            Person temp = arr[0];
+            foreach (Person item in arr)
+            {
+                if (temp.Age > item.Age)
+                {
+                    temp = item;
+                }
+            }
+            return temp;
+        }
+        public static Person MaxAge(this Person[] arr)
+        {
+            Person temp = arr[0];
+            foreach (Person item in arr)
+            {
+                if (temp.Age < item.Age)
+                {
+                    temp = item;
+                }
+            }
+            return temp;
+        }
     }
+    public record Person(string Name, int Age, string SecondName);
+    
 }
