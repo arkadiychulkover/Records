@@ -1,22 +1,41 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace Records
 {
-    internal class Program
+    internal class Program <T>
     {
+        public T Max<T>(T a, T b, T c) where T : IComparable
+        {
+            if (a.CompareTo(b) > 0 && a.CompareTo(c) > 0)
+            {
+                return a;
+            }
+            else if (b.CompareTo(a) > 0 && b.CompareTo(c) > 0)
+            {
+                return b;
+            }
+            else
+            {
+                return c;
+            }
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine(3.IsntEqual());
+            //Console.WriteLine(3.IsntEqual());
 
-            Console.WriteLine(4.IsEqual());
+            //Console.WriteLine(4.IsEqual());
 
-            Console.WriteLine("hello".HowMuchVowels());
+            //Console.WriteLine("hello".HowMuchVowels());
 
-            Console.WriteLine(4.IsSimple());
+            //Console.WriteLine(4.IsSimple());
 
-            Console.WriteLine("hello".HowMuchNotVowels());
+            //Console.WriteLine("hello".HowMuchNotVowels());
 
-            Console.WriteLine("hello".Reverse());
+            //Console.WriteLine("hello".Reverse());
+
+            Program<int> program = new Program<int>();
+            Console.WriteLine(program.Max(1, 2, 3));
         }
     }
 
@@ -112,5 +131,33 @@ namespace Records
         }
     }
     public record Person(string Name, int Age, string SecondName);
-    
+    public class Stek<T>
+    {
+        public T[] arr = new T[10];
+        public int count = 0;
+        public void Push(T a)
+        {
+            arr[count] = a;
+            count++;
+        }
+        public void Pop()
+        {
+            count--;
+            T[] temp = new T[count];
+            for (int i = 0; i < count; i++)
+            {
+                temp[i] = arr[i];
+            }
+            arr = temp;
+        }
+        public T Peek()
+        {
+            return arr[count]; 
+        }
+        public int Count()
+        {
+            return count;
+        }
+    }
+
 }
